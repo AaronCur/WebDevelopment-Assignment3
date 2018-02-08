@@ -10,13 +10,11 @@ class Board(models.Model):
     def __str__(self):
         return self.name
 
-
 class Topic(models.Model):
     subject = models.CharField(max_length=255)
     last_updated = models.DateTimeField(auto_now_add=True)
     board = models.ForeignKey(Board, on_delete = models.CASCADE, related_name='topics')
     starter = models.ForeignKey(User, on_delete = models.CASCADE, related_name='topics')
-
 
 class Post(models.Model):
     message = models.TextField(max_length=4000)
